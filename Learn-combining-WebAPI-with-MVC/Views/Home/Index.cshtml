@@ -1,0 +1,31 @@
+﻿@model IEnumerable<HomeIndexViewModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<ul class="container-fluid">
+    @foreach (var item in Model)
+    {
+    <li class="row">
+        <div class="col-xs-2 lead">
+            @item.GigDate.ToString("MMM dd yyyy")
+        </div>
+        @if (item.Booked)
+        {
+            <div class="col-xs-2">
+                <button class="btn-sm btn-info" data-gig-id="@item.GigId" disabled>Going</button>
+            </div>
+        }
+        else
+        {
+            <div class="col-xs-2">
+                <button class="btn-sm btn-default j-going" data-gig-id="@item.GigId">Going ?</button>
+            </div>
+        }
+    </li>
+    }
+</ul>
+
+@section scripts{
+    <script src="~/Scripts/Index.js"></script>
+}
